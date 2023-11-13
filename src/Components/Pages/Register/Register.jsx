@@ -1,55 +1,57 @@
+import { useContext, useEffect, useRef, useState } from "react";
+import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import img from '../../../assets/others/authentication1.png'
-import bg from '../../../assets/others/authentication.png'
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { AuthContext } from '../../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
-const Login = () => {
+const Register = () => {
+    const {createUser} = useContext(AuthContext)
 
-    const {signIn} = useContext(AuthContext)
+    const[disable,setDisable]=useState(true)
+   const captchaRef = useRef(null)
 
-     const[disable,setDisable]=useState(true)
-    const captchaRef = useRef(null)
-
-    useEffect(()=>{
-        loadCaptchaEnginge(6); 
-    },[])
+   useEffect(()=>{
+       loadCaptchaEnginge(6); 
+   },[])
 
 
-    const captchaValidationHandler = () => {
-        const user_captcha= captchaRef.current.value 
-        if(validateCaptcha(user_captcha)){
-           return  setDisable(false)
-        }else{
-           return setDisable(true)
-        }
-    }
+   const captchaValidationHandler = () => {
+       const user_captcha= captchaRef.current.value 
+       if(validateCaptcha(user_captcha)){
+          return  setDisable(false)
+       }else{
+          return setDisable(true)
+       }
+   }
 
-    const loginHandler = e => {
-        e.preventDefault()
-        const email = e.target.email.value 
-        const password = e.target.password.value 
-        console.log(email,password);
-        signIn(email,password)
-        .then(result => {
-            const user = result.user 
-            console.log(user);
-        })
-        .catch(error=> {
-            console.log(error);
-        })
-    }
-
-
+   const loginHandler = e => {
+       e.preventDefault()
+       const email = e.target.email.value 
+       const password = e.target.password.value 
+       const name = e.target.name.value 
+       console.log(email,password);
+       createUser(email,password)
+       .then(result => {
+           const user = result.user 
+           console.log(user);
+       })
+       .catch(error=> {
+           console.log(error);
+       })
+   }
     return (
         <div>
-            <div className="hero min-h-screen ">
-  <div className="hero-content flex-col-reverse lg:flex-row">
+              <div className="hero min-h-screen ">
+  <div className="hero-content flex-col-reverse lg:flex-row-reverse">
     <div className="text-center lg:text-left">
       <img className='lg:w-3/4' src={img} alt="" />
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <form onSubmit={loginHandler} className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input name='name' type="name" placeholder="name" className="input input-bordered" required />
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -76,7 +78,6 @@ const Login = () => {
           <input disabled={disable} className="btn btn-primary" type="submit" value="Login" />
         </div>
       </form>
-      <p>Don&lsquo;t have an Account? please <Link to="/register">Register</Link></p>
     </div>
   </div>
 </div>
@@ -84,4 +85,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

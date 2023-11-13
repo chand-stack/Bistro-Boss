@@ -4,7 +4,7 @@ import Footer from "../Components/Shared/Footer/Footer";
 
 const Main = () => {
     const location = useLocation()
-    const loginpage = location.pathname.includes("login")
+    const loginpage = location.pathname.includes("login") || location.pathname.includes("register")
 
     return (
         <div>
