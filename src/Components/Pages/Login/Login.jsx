@@ -4,6 +4,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import GoogleLogin from '../../SocialLogin/GoogleLogin';
 const Login = () => {
 
     const {signIn} = useContext(AuthContext)
@@ -77,6 +78,7 @@ const Login = () => {
         </div>
       </form>
       <p>Don&lsquo;t have an Account? please <Link to="/register">Register</Link></p>
+      <GoogleLogin></GoogleLogin>
     </div>
   </div>
 </div>

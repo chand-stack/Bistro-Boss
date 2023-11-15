@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import img from '../../../assets/others/authentication1.png'
 import { useContext } from "react";
 import usePublicAxios from "../../../useAxios/usePublicAxios";
+import GoogleLogin from "../../SocialLogin/GoogleLogin";
+import { Link } from "react-router-dom";
 const Register = () => {
 //     const {createUser} = useContext(AuthContext)
 //     const[disable,setDisable]=useState(true)
@@ -108,6 +110,8 @@ const {
           <input className="btn btn-primary" type="submit" value="Login" />
         </div>
       </form>
+      <p>Already have an Account? please <Link to="/login">Login</Link></p>
+      <GoogleLogin></GoogleLogin>
     </div>
   </div>
 </div>
