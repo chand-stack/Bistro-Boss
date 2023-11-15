@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../../useAxios/useAxios";
+import useCart from "../../../Hook/useCart";
 
 const ShopCard = ({item}) => {
     const {price,recipe,name,image,_id} = item;
@@ -10,8 +11,9 @@ const ShopCard = ({item}) => {
     const axios = useAxios()
 
     const navigate = useNavigate()
+    const [,refetch] = useCart()
 
-    const cartHandler = food => {
+    const cartHandler = () => {
       // console.log(food);
       if(user && user.email){
 
@@ -30,7 +32,9 @@ const ShopCard = ({item}) => {
               text: "Your food has been added to cart.",
               icon: "success"
             });
+            refetch()
         })
+        
 
       }else{
         Swal.fire({
@@ -62,7 +66,7 @@ const ShopCard = ({item}) => {
     <h2 className="card-title flex-grow justify-center">{name}</h2>
     <p className="flex-grow">{recipe}</p>
     <div className="card-actions justify-center">
-      <button onClick={()=> cartHandler(item)} className="btn btn-outline border-t-0 border-l-0 border-r-0 border-b-2 text-[#BB8506] hover:text-[#BB8506] border-[#BB8506]">ADD TO CART</button>
+      <button onClick={cartHandler} className="btn btn-outline border-t-0 border-l-0 border-r-0 border-b-2 text-[#BB8506] hover:text-[#BB8506] border-[#BB8506]">ADD TO CART</button>
     </div>
   </div>
 </div>

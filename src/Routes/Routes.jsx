@@ -5,6 +5,8 @@ import Menu from "../Components/Pages/Menu/Menu";
 import Order from "../Components/Pages/Order/Order";
 import Login from "../Components/Pages/Login/Login";
 import Register from "../Components/Pages/Register/Register";
+import DashBoard from "../Layout/DashBoard";
+import Cart from "../Components/Pages/DashBoard/Cart";
 
 
 const routes = createBrowserRouter([
@@ -31,6 +33,16 @@ const routes = createBrowserRouter([
             {
                 path:"/register",
                 element:<Register></Register>
+            }
+        ]
+    },
+    {
+        path:"dashBoard",
+        element:<DashBoard></DashBoard>,
+        children:[
+            {
+                path:"cart",
+                element:<Cart></Cart>
             }
         ]
     }

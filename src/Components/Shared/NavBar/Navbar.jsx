@@ -7,12 +7,13 @@ import useCart from "../../../Hook/useCart";
 const Navbar = () => {
   const {user,logOut}= useContext(AuthContext)
 
-  const [cart] = useCart()
+  const [cart,refetch] = useCart()
 
   const logoutHandler = () => {
     logOut()
     .then(()=>{
       console.log("logout");
+      refetch()
     })
     .catch(err=> {
       console.log(err);
@@ -22,11 +23,11 @@ const Navbar = () => {
        <li><Link to="/">Home</Link></li>
        <li><Link to="/menu">Our Menu</Link></li>
        <li><Link to="/order">Our Shop</Link></li>
-       <li><button className="btn bg-transparent text-white border-none">
+       <li><Link to="/dashBoard/cart" className="btn bg-transparent text-white border-none">
        <FaShoppingCart />
-  Inbox
+  Cart
   <div className="badge badge-secondary">+{cart?.length}</div>
-</button></li>
+</Link></li>
       
     </>
     return (

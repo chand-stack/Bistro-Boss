@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useForm } from "react-hook-form"
 import img from '../../../assets/others/authentication1.png'
 import { useContext } from "react";
+import usePublicAxios from "../../../useAxios/usePublicAxios";
 const Register = () => {
 //     const {createUser} = useContext(AuthContext)
 //     const[disable,setDisable]=useState(true)
@@ -40,10 +41,18 @@ const {
     watch,
     formState: { errors },
   } = useForm()
+
   const {createUser} = useContext(AuthContext)
+
+  const publicAxios = usePublicAxios()
   const onSubmit = (data) => {
     createUser(data.email,data.password)
     .then(result => {
+          const user = {
+            name: data.name,
+            email: data.email
+          }
+          publicAxios.post("/users",user).then(res => {console.log(res.data);})
         console.log(result.user);
     })
     .catch(error => {
