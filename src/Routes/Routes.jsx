@@ -7,6 +7,7 @@ import Login from "../Components/Pages/Login/Login";
 import Register from "../Components/Pages/Register/Register";
 import DashBoard from "../Layout/DashBoard";
 import Cart from "../Components/Pages/DashBoard/Cart";
+import Users from "../Components/Pages/DashBoard/Users";
 
 
 const routes = createBrowserRouter([
@@ -43,6 +44,10 @@ const routes = createBrowserRouter([
             {
                 path:"cart",
                 element:<Cart></Cart>
+            },
+            {
+                path:"users",
+                element:<Users></Users>
             }
         ]
     }
