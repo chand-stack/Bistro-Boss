@@ -8,6 +8,7 @@ import Register from "../Components/Pages/Register/Register";
 import DashBoard from "../Layout/DashBoard";
 import Cart from "../Components/Pages/DashBoard/Cart";
 import Users from "../Components/Pages/DashBoard/Users";
+import AdminRoute from "../Private/AdminRoute";
 
 
 const routes = createBrowserRouter([
@@ -47,7 +48,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:"users",
-                element:<Users></Users>
+                element:<AdminRoute><Users></Users></AdminRoute>
             }
         ]
     }
