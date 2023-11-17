@@ -4,7 +4,7 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const PopularMenu = () => {
     const [menu] = useMenu()
-    const popularMenu = menu.filter(item => item.category === "popular")
+    const popularMenu = menu?.filter(item => item.category === "popular")
     console.log(popularMenu);
     return (
         <div className="container mx-auto">

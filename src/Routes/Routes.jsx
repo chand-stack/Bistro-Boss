@@ -9,6 +9,7 @@ import DashBoard from "../Layout/DashBoard";
 import Cart from "../Components/Pages/DashBoard/Cart";
 import Users from "../Components/Pages/DashBoard/Users";
 import AdminRoute from "../Private/AdminRoute";
+import Additem from "../Components/Pages/DashBoard/Additem";
 
 
 const routes = createBrowserRouter([
@@ -49,6 +50,10 @@ const routes = createBrowserRouter([
             {
                 path:"users",
                 element:<AdminRoute><Users></Users></AdminRoute>
+            },
+            {
+                path:"additem",
+                element:<AdminRoute><Additem></Additem></AdminRoute>
             }
         ]
     }

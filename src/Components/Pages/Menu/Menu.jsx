@@ -12,11 +12,11 @@ import MenuCategory from "../../Shared/MenuCategory/MenuCategory";
 
 const Menu = () => {
     const [menu] = useMenu()
-    const offer = menu.filter(item => item.category === "offered")
-    const dessert = menu.filter(item => item.category === "dessert")
-    const pizza = menu.filter(item => item.category ===  "pizza")
-    const salad = menu.filter(item => item.category ===  "salad")
-    const soup = menu.filter(item => item.category ===  "soup")
+    const offer = menu?.filter(item => item.category === "offered")
+    const dessert = menu?.filter(item => item.category === "dessert")
+    const pizza = menu?.filter(item => item.category ===  "pizza")
+    const salad = menu?.filter(item => item.category ===  "salad")
+    const soup = menu?.filter(item => item.category ===  "soup")
     return (
         <><Helmet>
             <title>Bistro Boss | Menu</title>
