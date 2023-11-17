@@ -1,9 +1,10 @@
 import { FaAd, FaCalendar, FaCalendarCheck, FaCartPlus, FaHome, FaMoneyBill } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hook/useAdmin";
 
 const DashBoard = () => {
 
-    const admin = true
+    const [isAdmin] = useAdmin()
 
     return (
         <div className="container mx-auto flex">
@@ -14,7 +15,7 @@ const DashBoard = () => {
     </div>
     <ul className="uppercase py-7 px-5 space-y-3 font-medium">
         {
-            admin? <>
+            isAdmin? <>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/adminhome"><FaCalendar></FaCalendar>Admin Home</NavLink></li>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/additem"><FaMoneyBill></FaMoneyBill>add items</NavLink></li>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/manageitem"><FaCartPlus></FaCartPlus> manage items</NavLink></li>
