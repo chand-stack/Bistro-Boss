@@ -3,6 +3,7 @@ import useMenu from "../../../Hook/useMenu";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
 import useAxios from "../../../useAxios/useAxios";
+import { Link } from "react-router-dom";
 
 const ManageItem = () => {
     const [menu, ,refetch] = useMenu()
@@ -22,12 +23,12 @@ const ManageItem = () => {
             axios.delete(`/menu/${item._id}`)
             .then(res=>{console.log(res.data)
             if(res.data.deletedCount>0){
-                refetch()
                    Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
                 icon: "success"
               });
+              refetch()
             }
             })
             }
@@ -67,7 +68,7 @@ const ManageItem = () => {
             <td>{item?.name}</td>
             <td>${item?.price}</td>
             <td>
-            <button  className="btn bg-[#D1A054] text-white"><FaPen></FaPen></button>
+            <Link to={`/dashboard/updateItem/${item._id}`}><button  className="btn bg-[#D1A054] text-white"><FaPen></FaPen></button></Link>
             </td>
             <td>
             <button onClick={()=>deleteItemHandler(item)} className="btn bg-red-600 text-white "><FaTrash></FaTrash></button>

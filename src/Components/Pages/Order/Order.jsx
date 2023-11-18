@@ -8,11 +8,11 @@ import ShopCard from '../../Shared/ShopCard/ShopCard';
 const Order = () => {
     const [tabIndex,setTabIndex] = useState(0)
     const [menu] = useMenu()
-    const drink = menu.filter(item => item.category === "drinks")
-    const dessert = menu.filter(item => item.category === "dessert")
-    const pizza = menu.filter(item => item.category ===  "pizza")
-    const salad = menu.filter(item => item.category ===  "salad")
-    const soup = menu.filter(item => item.category ===  "soup")
+    const drink = menu?.filter(item => item.category === "drinks")
+    const dessert = menu?.filter(item => item.category === "dessert")
+    const pizza = menu?.filter(item => item.category ===  "pizza")
+    const salad = menu?.filter(item => item.category ===  "salad")
+    const soup = menu?.filter(item => item.category ===  "soup")
     return (
         <div>
             <Cover img={shopImg} heading={"OUR SHOP"} subHeading={"Would you like to try a dish?"}></Cover>
