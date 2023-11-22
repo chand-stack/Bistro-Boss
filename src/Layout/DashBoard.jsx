@@ -23,7 +23,7 @@ const DashBoard = () => {
         <li><NavLink className="flex items-center gap-1" to="/dashboard/users"><FaCalendarCheck></FaCalendarCheck> all users</NavLink></li>
             </>:
             <>
-            <li><NavLink className="flex items-center gap-1" to="/dashboard/home"><FaHome></FaHome>User Home</NavLink></li>
+            <li><NavLink className="flex items-center gap-1" to="/dashboard/userhome"><FaHome></FaHome>User Home</NavLink></li>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/reservation"><FaCalendar></FaCalendar> reservation</NavLink></li>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/payment"><FaMoneyBill></FaMoneyBill> payment history</NavLink></li>
         <li><NavLink className="flex items-center gap-1" to="/dashboard/cart"><FaCartPlus></FaCartPlus> my cart</NavLink></li>

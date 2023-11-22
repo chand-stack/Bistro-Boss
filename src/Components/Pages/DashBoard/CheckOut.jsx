@@ -72,7 +72,21 @@ const CheckOut = () => {
             console.log(confirmError);
         }else{
             console.log(paymentIntent);
+            if(paymentIntent.status=="succeeded"){
+                const payment = {
+                    email: user.email,
+                    price: totalPrice,
+                    transactionId: paymentIntent.id,
+                    date: new Date(),
+                    cartIds: cart.map(item=>item._id),
+                    menuItemIds: cart.map(item => item.menuId),
+                    status :"pending"
+                }
+                const res = await axios.post("/payments", payment)
+                console.log(res.data);
+            }
         }
+
     }
     return (
         <div>
